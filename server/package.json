@@ -4,9 +4,14 @@
   "description": "lightly coding API to generate randon points to calculate pi",
   "license": "ISC",
   "author": "Isabela Rapetti",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
   }
 }
