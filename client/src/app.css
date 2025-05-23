@@ -28,6 +28,12 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  background-image: radial-gradient(#38d99f 1.5px, transparent 1.5px),
+    radial-gradient(#38d99f 1.5px, transparent 1.5px);
+  background-size: 45px 45px;
+  background-position: 0 0, 22.5px 22.5px;
+  background-color: #e8eeee;
 }
 
 h1 {
@@ -74,6 +80,6 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #db663f;
   }
 }

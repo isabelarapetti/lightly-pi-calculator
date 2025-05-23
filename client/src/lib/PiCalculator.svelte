@@ -3,7 +3,7 @@
   // using a Web Worker for the calculation to avoid blocking the main thread.
   // and a placeholder for WASM implementation which should make the same calculation, faster.
 
-  import MonteCarloWorker from '$lib/monteCarlo.worker.js?worker';
+  import MonteCarloWorker from './monteCarlo.worker.js?worker';
 
   //default values
   let numPointsWorker = 1000;
@@ -80,14 +80,17 @@
     <div class="input-group">
       <label for="numPointsWorker">Worker Points:</label>
       <input type="number" id="numPointsWorker" bind:value={numPointsWorker} min="1" disabled={isLoading} />
+          <button on:click={calculatePiWorker} disabled={isLoading}>
+      {isLoading ? 'Calculating...' : 'Calculate 𝝅 with Worker'}
+    </button>
     </div>
     <div class="input-group">
       <label for="numPointsWasm">WASM Points (Not implemented yet):</label>
       <input type="number" id="numPointsWasm" bind:value={numPointsWasm} min="1" disabled={isLoading} />
-    </div>
-    <button on:click={calculatePiWorker} disabled={isLoading}>
-      {isLoading ? 'Calculating...' : 'Calculate 🥧 with Worker'}
+          <button on:click={calculatePiWasm} disabled={isLoading}>
+      {isLoading ? 'Calculating...' : 'Calculate 𝝅 with WASM'}
     </button>
+    </div>
   </div>
 
   <div class="result">
@@ -98,8 +101,10 @@
 
 <style>
   main {
-    padding: 1em;
+    padding: 3em;
     border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f2f2f2;
   }
 
   h1 {
@@ -109,9 +114,10 @@
 
   .controls-container {
     display: flex;
-    align-items: flex-end;
+    justify-content: center;
     gap: 15px;
     margin-bottom: 1em;
+    margin: auto;
   }
 
   .input-group {
@@ -129,6 +135,7 @@
     padding: 0.5em;
     border: 1px solid #ccc;
     flex-grow: 1;
+    border-radius: 3px;
   }
 
   button {
